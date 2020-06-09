@@ -1,0 +1,3 @@
+http://sim.okawa-denshi.jp/en/CRtool.php
+
+https://en.wikipedia.org/wiki/Sallen%E2%80%93Key_topology
