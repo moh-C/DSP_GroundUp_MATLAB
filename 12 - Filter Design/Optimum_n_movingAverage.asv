@@ -1,0 +1,15 @@
+clear; clc; close;
+sgns = load('signals.mat');
+sgn_mix = sgns.sgn_mix;
+
+no_pnts = 50;
+corr_list = zeros(2,no_pnts);
+for iter=1:100
+    sgn_out = movmean(sgn_mix,no_pnts);
+    plot(sgn_mix);
+    plot(sgn_out);
+    corr_ = crosscorr(sgn_mix,sgn_out);
+    max_corr_ = max(corr_);
+    corr_list(1,iter) = ;
+    corr_list(2,iter) = ;
+end
