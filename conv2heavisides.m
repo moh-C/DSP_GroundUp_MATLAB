@@ -4,11 +4,13 @@ limit = 20;
 primary_limit = -limit:1:limit;
 secondary_limit = -2*limit+1:1:2*limit+1;
 quad_limit = -4*limit+1:1:4*limit+1;
+octo_limit = -8*limit+1:1:8*limit+1;
 
-h = heaviside(primary_limit+5)-heaviside(primary_limit-5);
+h = exp(-primary_limit./5) .* (heaviside(primary_limit+5)-heaviside(primary_limit-5));
 x = heaviside(primary_limit+5)-heaviside(primary_limit-5);
 y = conv(x,h);
 autoConv = conv(y,y);
+maxConv = conv(autoConv, autoConv);
 
 subplot(2,2,1)
 stem(primary_limit, h);
@@ -29,3 +31,8 @@ subplot(2,2,4);
 stem(quad_limit, autoConv);
 title('Convolved 4 times');
 xlim([-4*limit+1 4*limit+1]);
+
+figure;
+stem(octo_limit, maxConv);
+title('Max Conv')
+xlim([-8*limit+1 8*limit+1]);
