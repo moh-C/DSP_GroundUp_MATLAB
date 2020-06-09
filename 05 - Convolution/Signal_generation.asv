@@ -1,0 +1,14 @@
+clear; clc; close;
+f1 = 20;
+f2 = 2;
+T = 3;
+imp_response = load('imp_response_1_6_100.mat');
+imp_response = imp_response.imp_response_1_6_100;
+ts = 1/100;
+t = 0:ts:T;
+signal_20hz = sin(2*pi*f1*t);
+signal_2hz = sin(2*pi*f2*t);
+signal_mixed = signal_20hz + signal_2hz;
+%filterDesigner
+plot(imp_response);
+close;
